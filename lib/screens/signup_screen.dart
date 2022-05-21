@@ -1,8 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
 
+import '../resources/auth_methods.dart';
 import '../utils/colors.dart';
+import '../utils/utils.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -16,6 +21,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
 
   @override
   void dispose() {
@@ -24,6 +30,23 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwordController.dispose();
     _bioController.dispose();
     _usernameController.dispose();
+  }
+
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
+
+  void signUpUser() async {
+    String res = await AuthMethods().SignUpUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _usernameController.text,
+      bio: _bioController.text,
+      file: _image!,
+    );
   }
 
   @override
@@ -50,16 +73,21 @@ class _SignupScreenState extends State<SignupScreen> {
               //Circular image to showw selected file
               Stack(
                 children: [
-                  const CircleAvatar(
-                    radius: 64,
-                    backgroundImage: NetworkImage(
-                        'https://pbs.twimg.com/profile_images/1435293933429346307/FLw75OT2_400x400.jpg'),
-                  ),
+                  _image != null
+                      ? CircleAvatar(
+                          radius: 64,
+                          backgroundImage: MemoryImage(_image!),
+                        )
+                      : const CircleAvatar(
+                          radius: 64,
+                          backgroundImage: NetworkImage(
+                              'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'),
+                        ),
                   Positioned(
                     bottom: -10,
                     left: 80,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: selectImage,
                       icon: const Icon(Icons.add_a_photo),
                     ),
                   ),
@@ -97,17 +125,16 @@ class _SignupScreenState extends State<SignupScreen> {
               TextFieldInput(
                   textEditingController: _bioController,
                   textInputType: TextInputType.text,
-                  hintText: "Enter your Nio"),
+                  hintText: "Enter your Bio"),
 
               const SizedBox(height: 12),
 
               InkWell(
-                onTap: () {},
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     child: const Text('Sign up'),
-                    onPressed: () {},
+                    onPressed: signUpUser,
                     style: ElevatedButton.styleFrom(
                       primary: blueColor,
                       padding: const EdgeInsets.symmetric(vertical: 12),
