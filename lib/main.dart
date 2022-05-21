@@ -6,6 +6,7 @@ import 'package:instagram_flutter/responsive/web_screen_layout.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 
 import 'responsive/mobile_screen_layout.dart';
+import 'screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +36,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: const ResponsiveLayoutScreen(
-        webScreenlayout: WebScreenLayout(),
-        mobileScreenlayout: MobileScreenLayout(),
-      ),
+      // home: const ResponsiveLayoutScreen(
+      //   webScreenlayout: WebScreenLayout(),
+      //   mobileScreenlayout: MobileScreenLayout(),
+      // ),
+      home: const LoginScreen(),
     );
   }
 }
