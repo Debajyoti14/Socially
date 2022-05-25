@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:instagram_flutter/screens/signup_screen.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
 
 import '../resources/auth_methods.dart';
@@ -37,6 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
     if (res != 'success') {
       showSnackbar(res, context);
     }
+  }
+
+  void navigateToSignup() async {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const SignupScreen()));
   }
 
   @override
@@ -98,9 +104,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    child: const Text("Don't have an account?"),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
+                  GestureDetector(
+                    onTap: navigateToSignup,
+                    child: Container(
+                      child: const Text("Don't have an account?"),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                    ),
                   ),
                   Container(
                     child: const Text(
