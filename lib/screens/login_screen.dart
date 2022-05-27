@@ -4,6 +4,9 @@ import 'package:instagram_flutter/screens/signup_screen.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
 
 import '../resources/auth_methods.dart';
+import '../responsive/mobile_screen_layout.dart';
+import '../responsive/responsive_layout_screen.dart';
+import '../responsive/web_screen_layout.dart';
 import '../utils/colors.dart';
 import '../utils/utils.dart';
 
@@ -37,6 +40,15 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     if (res != 'success') {
       showSnackbar(res, context);
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayoutScreen(
+            webScreenlayout: WebScreenLayout(),
+            mobileScreenlayout: MobileScreenLayout(),
+          ),
+        ),
+      );
     }
   }
 
@@ -101,26 +113,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(),
                 flex: 2,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: navigateToSignup,
-                    child: Container(
+              GestureDetector(
+                onTap: navigateToSignup,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       child: const Text("Don't have an account?"),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
-                  ),
-                  Container(
-                    child: const Text(
-                      "Sign up",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      child: const Text(
+                        "Sign up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  )
-                ],
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                    )
+                  ],
+                ),
               )
             ],
           ),
