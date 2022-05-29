@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
 import '../resources/firestore_methods.dart';
+import '../screens/comment_Screen.dart';
 import '../utils/colors.dart';
 import 'like_animation.dart';
 
@@ -165,7 +166,11 @@ class _PostCardState extends State<PostCard> {
                 icon: const Icon(
                   Icons.comment_outlined,
                 ),
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CommentScreen(),
+                  ),
+                ),
               ),
               IconButton(
                 icon: const Icon(
