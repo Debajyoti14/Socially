@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
+import '../resources/firestore_methods.dart';
 
 class CommentCard extends StatefulWidget {
-  const CommentCard({Key? key}) : super(key: key);
+  final snap;
+  const CommentCard({Key? key, required this.snap}) : super(key: key);
 
   @override
   State<CommentCard> createState() => _CommentCardState();
@@ -10,6 +16,8 @@ class CommentCard extends StatefulWidget {
 class _CommentCardState extends State<CommentCard> {
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).getUser;
+
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 18,
@@ -18,8 +26,7 @@ class _CommentCardState extends State<CommentCard> {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://avatars.githubusercontent.com/u/91759192?v=4'),
+            backgroundImage: NetworkImage(widget.snap['profilePic']),
             radius: 18,
           ),
           Expanded(
@@ -33,13 +40,13 @@ class _CommentCardState extends State<CommentCard> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'username',
+                          text: widget.snap['name'],
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextSpan(
-                          text: 'some description to insert',
+                          text: ' ${widget.snap['text']}',
                         ),
                       ],
                     ),
@@ -47,7 +54,8 @@ class _CommentCardState extends State<CommentCard> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Text(
-                      '23/12/21',
+                      DateFormat.yMMMd()
+                          .format(widget.snap['datePublished'].toDate()),
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -58,9 +66,24 @@ class _CommentCardState extends State<CommentCard> {
               ),
             ),
           ),
-          Container(
+          InkWell(
+            onTap: () async {
+              // await FirestoreMethods().likeComment(
+              //   widget.snap['postId'],
+              //   widget.snap['commentId'],
+              //   user.uid,
+              //   widget.snap['likes'],
+              // );
+              print(widget.snap['postId']);
+              print(widget.snap['commentId']);
+              print(user.uid);
+              print(widget.snap['likes']);
+            },
+            child: Container(
               padding: const EdgeInsets.all(8),
-              child: const Icon(Icons.favorite, size: 16))
+              child: const Icon(Icons.favorite, size: 16),
+            ),
+          )
         ],
       ),
     );
