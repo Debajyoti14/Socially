@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_flutter/follow_button.dart';
+import 'package:instagram_flutter/widgets/follow_button.dart';
 
 import '../resources/auth_methods.dart';
 import '../resources/firestore_methods.dart';
