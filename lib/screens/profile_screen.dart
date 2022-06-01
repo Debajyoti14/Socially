@@ -114,11 +114,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             textColor: primaryColor,
                                             function: () async {
                                               await AuthMethods().signOut();
-                                              Navigator.of(context)
-                                                  .pushReplacement(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              LoginScreen()));
+                                              Navigator.of(context).pushReplacement(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const LoginScreen()));
                                             },
                                           )
                                         : isFollowing
@@ -212,11 +211,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         itemBuilder: (context, index) {
                           DocumentSnapshot snap =
                               (snapshot.data! as dynamic).docs[index];
-                          return Container(
-                            child: Image(
-                              image: NetworkImage(snap['postUrl']),
-                              fit: BoxFit.cover,
-                            ),
+                          return Image(
+                            image: NetworkImage(snap['postUrl']),
+                            fit: BoxFit.cover,
                           );
                         });
                   },

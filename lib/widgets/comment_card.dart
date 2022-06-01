@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
-import '../resources/firestore_methods.dart';
 
 class CommentCard extends StatefulWidget {
   final snap;

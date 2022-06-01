@@ -27,7 +27,6 @@ class AuthMethods {
   }) async {
     String res = "Some Error Ocurred";
     try {
-      print('working');
       if (email.isNotEmpty ||
           password.isNotEmpty ||
           username.isNotEmpty ||
@@ -38,7 +37,6 @@ class AuthMethods {
           email: email,
           password: password,
         );
-        print(cred.user!.uid);
 
         String photoUrl = await StorageMethods()
             .uploadImageToStorage('profilePics', file, false);
