@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,25 +35,32 @@ class FeedScreen extends StatelessWidget {
           stream: FirebaseFirestore.instance.collection('posts').snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
+            if (snapshot.connectionState == ConnectionState.active) {
+              print(snapshot.data);
+              return ListView.builder(
+                itemCount: snapshot.data?.docs.length,
+                itemBuilder: (context, index) => Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal:
+                        (MediaQuery.of(context).size.width > webScreenSize)
+                            ? MediaQuery.of(context).size.width * 0.3
+                            : 0,
+                    vertical:
+                        (MediaQuery.of(context).size.width > webScreenSize)
+                            ? 15
+                            : 0,
+                  ),
+                  child: PostCard(snap: snapshot.data!.docs[index].data()),
+                ),
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            return ListView.builder(
-                itemCount: snapshot.data?.docs.length,
-                itemBuilder: (context, index) => Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal:
-                          (MediaQuery.of(context).size.width > webScreenSize)
-                              ? MediaQuery.of(context).size.width * 0.3
-                              : 0,
-                      vertical:
-                          (MediaQuery.of(context).size.width > webScreenSize)
-                              ? 15
-                              : 0,
-                    ),
-                    child: PostCard(snap: snapshot.data!.docs[index].data())));
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }),
     );
   }

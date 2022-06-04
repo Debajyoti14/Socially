@@ -23,7 +23,7 @@ class AuthMethods {
     required String password,
     required String username,
     required String bio,
-    required Uint8List file,
+    Uint8List? file,
   }) async {
     String res = "Some Error Ocurred";
     try {
@@ -39,7 +39,7 @@ class AuthMethods {
         );
 
         String photoUrl = await StorageMethods()
-            .uploadImageToStorage('profilePics', file, false);
+            .uploadImageToStorage('profilePics', file!, false);
         // add user to our database
 
         model.User user = model.User(

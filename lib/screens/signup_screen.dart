@@ -162,14 +162,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     child: _isLoading
-                        ? const CircularProgressIndicator(
-                            color: primaryColor,
+                        ? const SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: CircularProgressIndicator(
+                              color: primaryColor,
+                            ),
                           )
                         : const Text('Sign up'),
                     onPressed: signUpUser,
                     style: ElevatedButton.styleFrom(
                       primary: blueColor,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                   ),
                 ),
@@ -189,13 +193,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     Container(
                       child: const Text(
-                        "Sign up",
+                        "Log in",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                    )
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
                   ],
                 ),
               )

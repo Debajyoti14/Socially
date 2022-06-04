@@ -43,47 +43,48 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: mobileBackgroundColor,
-          centerTitle: false,
-          title: SvgPicture.asset(
-            'assets/images/ic_instagram.svg',
-            color: primaryColor,
-            height: 32,
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.home),
-              color: _page == 0 ? primaryColor : secondaryColor,
-              onPressed: () => navigationTapped(0),
-            ),
-            IconButton(
-              icon: const Icon(Icons.search),
-              color: _page == 1 ? primaryColor : secondaryColor,
-              onPressed: () => navigationTapped(1),
-            ),
-            IconButton(
-              icon: const Icon(Icons.add_a_photo),
-              color: _page == 2 ? primaryColor : secondaryColor,
-              onPressed: () => navigationTapped(2),
-            ),
-            IconButton(
-              icon: const Icon(Icons.favorite),
-              color: _page == 3 ? primaryColor : secondaryColor,
-              onPressed: () => navigationTapped(3),
-            ),
-            IconButton(
-              icon: const Icon(Icons.person),
-              color: _page == 4 ? primaryColor : secondaryColor,
-              onPressed: () => navigationTapped(4),
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: mobileBackgroundColor,
+        centerTitle: false,
+        title: SvgPicture.asset(
+          'assets/images/ic_instagram.svg',
+          color: primaryColor,
+          height: 32,
         ),
-        body: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          children: homeScreenItems,
-          controller: pageController,
-          onPageChanged: onPageChanged,
-        ));
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            color: _page == 0 ? primaryColor : secondaryColor,
+            onPressed: () => navigationTapped(0),
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: _page == 1 ? primaryColor : secondaryColor,
+            onPressed: () => navigationTapped(1),
+          ),
+          IconButton(
+            icon: const Icon(Icons.add_a_photo),
+            color: _page == 2 ? primaryColor : secondaryColor,
+            onPressed: () => navigationTapped(2),
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            color: _page == 3 ? primaryColor : secondaryColor,
+            onPressed: () => navigationTapped(3),
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            color: _page == 4 ? primaryColor : secondaryColor,
+            onPressed: () => navigationTapped(4),
+          )
+        ],
+      ),
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        children: homeScreenItems,
+        controller: pageController,
+        onPageChanged: onPageChanged,
+      ),
+    );
   }
 }
