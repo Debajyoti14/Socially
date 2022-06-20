@@ -6,13 +6,13 @@ This is an Instagram clone made with flutter & firebase.In this project Firebase
 
 ## Screenshots
 
-![Login Page](https://user-images.githubusercontent.com/91759192/174604554-0c715d3f-74dc-463d-b638-f5da7de2a171.png)
+<img width="400" src="https://user-images.githubusercontent.com/91759192/174604554-0c715d3f-74dc-463d-b638-f5da7de2a171.png"/>
 
-![Feed](https://user-images.githubusercontent.com/91759192/174604816-bec821ba-0293-4dcf-be58-64f61b1d8fe2.png)
+<img width="400" src="https://user-images.githubusercontent.com/91759192/174604816-bec821ba-0293-4dcf-be58-64f61b1d8fe2.png"/>
 
-![Profile Page](https://user-images.githubusercontent.com/91759192/174604978-098e68b8-aa7d-4d3e-a077-1d5efecc33b0.png)
+<img width="400" src="https://user-images.githubusercontent.com/91759192/174604978-098e68b8-aa7d-4d3e-a077-1d5efecc33b0.png"/>
 
-![Comments Section](https://user-images.githubusercontent.com/91759192/174605055-3713d265-858b-4647-99c0-fcdc636c6999.png)
+<img width="400" src="https://user-images.githubusercontent.com/91759192/174605055-3713d265-858b-4647-99c0-fcdc636c6999.png"/>
 
 
 ## Lessons Learned
