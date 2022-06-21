@@ -1,20 +1,55 @@
 
-# Skribble-Multiplayer-Game
+# Instagram_Clone
 
-This is Multiplayer Flutter app built with MongoDB, NodeJS and Socket.io. Here one player has to draw inorder to explain a certain Word where the other has to guess. Atlast the one who guesses right with time, Wins.
+This is an Instagram clone made with flutter & firebase.In this project Firebase Auth,Firebase Firestore and Firebase Storage is used to make it a realtime social media mobile Application.
 
 
 ## Screenshots
 
-<img width="400" src="https://user-images.githubusercontent.com/91759192/174609847-9bfc7898-cbfd-40c7-bd7e-32559f6fb087.png"/>
+<img width="200" src="https://user-images.githubusercontent.com/91759192/174604554-0c715d3f-74dc-463d-b638-f5da7de2a171.png"/>
 
-<img width="400" src="https://user-images.githubusercontent.com/91759192/174609992-fbc9e961-bd94-4846-b3cc-50acfc15ab6d.png"/>
+<img width="200" src="https://user-images.githubusercontent.com/91759192/174604816-bec821ba-0293-4dcf-be58-64f61b1d8fe2.png"/>
 
-<img width="400" src="https://user-images.githubusercontent.com/91759192/174610058-9468b5b4-20b3-4749-b316-c0c73a96a172.png"/>
+<img width="200" src="https://user-images.githubusercontent.com/91759192/174604978-098e68b8-aa7d-4d3e-a077-1d5efecc33b0.png"/>
+
+<img width="200" src="https://user-images.githubusercontent.com/91759192/174605055-3713d265-858b-4647-99c0-fcdc636c6999.png"/>
 
 
 ## Lessons Learned
 
-This is the first-time i used custom backend with NodeJS and SocketIO in a Flutter app.
-So learnt a lot while building this app...
+In this project I have learnt Firebase Auth, Firebase Firestore and Firebase Storage along with building UI with Flutter & Dart
+
+
+## Contributing
+
+Contributions are always welcome!
+
+Please adhere to this project's `code of conduct`.
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Debajyoti14/Instagram_flutter.git
+```
+
+Go to the project directory
+
+```bash
+  cd Instagram_flutter
+```
+
+Install dependencies
+
+```bash
+  flutter packages get
+```
+
+Start the server
+
+```bash
+  flutter run
+```
 
