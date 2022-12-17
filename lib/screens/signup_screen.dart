@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
 
@@ -173,7 +172,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         : const Text('Sign up'),
                     onPressed: signUpUser,
                     style: ElevatedButton.styleFrom(
-                      primary: blueColor,
+                      backgroundColor: blueColor,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                   ),
