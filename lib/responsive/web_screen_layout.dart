@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:instagram_flutter/utils/global_variables.dart';
 
 import '../utils/colors.dart';
