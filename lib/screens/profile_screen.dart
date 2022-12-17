@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
-        title: Text(userData['username']),
+        title: Text(userData['username'] ?? ""),
         centerTitle: false,
       ),
       body: isLoading

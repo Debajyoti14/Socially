@@ -46,8 +46,8 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: SvgPicture.asset(
-          'assets/images/ic_instagram.svg',
+        title: Image.asset(
+          'assets/images/Socially.png',
           color: primaryColor,
           height: 32,
         ),

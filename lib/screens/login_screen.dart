@@ -75,10 +75,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(),
                 flex: 2,
               ),
-              SvgPicture.asset(
-                'assets/images/ic_instagram.svg',
+              Image.asset(
+                'assets/images/Socially.png',
                 color: primaryColor,
-                height: 64,
+                height: 85,
               ),
               const SizedBox(height: 64),
               //Text Field for Email
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         : const Text('Login'),
                     onPressed: loginUser,
                     style: ElevatedButton.styleFrom(
-                      primary: blueColor,
+                      backgroundColor: blueColor,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                   ),
