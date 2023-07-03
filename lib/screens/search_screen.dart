@@ -39,8 +39,6 @@ class _SearchScreenState extends State<SearchScreen> {
       body: isShowUsers
           ? FutureBuilder(
               builder: (context, snapshot) {
-                print('Not WORKING');
-                print((snapshot.data! as dynamic).docs.length);
                 if (!snapshot.hasData) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -105,7 +103,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     itemCount: (snapshot.data! as dynamic).docs.length,
                     itemBuilder: (context, index) => Image.network(
                         (snapshot.data! as dynamic).docs[index]['postUrl']));
-              }),
+              },
+            ),
     );
   }
 }
