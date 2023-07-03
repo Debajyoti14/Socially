@@ -39,39 +39,51 @@ class _SearchScreenState extends State<SearchScreen> {
       body: isShowUsers
           ? FutureBuilder(
               builder: (context, snapshot) {
+                print('Not WORKING');
+                print((snapshot.data! as dynamic).docs.length);
                 if (!snapshot.hasData) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-                return ListView.builder(
-                  itemCount: (snapshot.data! as dynamic).docs.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ProfileScreen(
-                            uid: (snapshot.data! as dynamic).docs[index]['uid'],
-                          ),
+                return (snapshot.data! as dynamic).docs.length != 0
+                    ? ListView.builder(
+                        itemCount: (snapshot.data! as dynamic).docs.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(
+                                  uid: (snapshot.data! as dynamic).docs[index]
+                                      ['uid'],
+                                ),
+                              ),
+                            ),
+                            child: ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  (snapshot.data! as dynamic).docs[index]
+                                      ['photoUrl'],
+                                ),
+                              ),
+                              title: Text((snapshot.data! as dynamic)
+                                  .docs[index]['username']),
+                            ),
+                          );
+                        },
+                      )
+                    : const Center(
+                        child: Text(
+                          "No Users Found",
+                          style: TextStyle(color: Colors.white),
                         ),
-                      ),
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            (snapshot.data! as dynamic).docs[index]['photoUrl'],
-                          ),
-                        ),
-                        title: Text((snapshot.data! as dynamic).docs[index]
-                            ['username']),
-                      ),
-                    );
-                  },
-                );
+                      );
               },
               future: FirebaseFirestore.instance
                   .collection('users')
                   .where('username',
                       isGreaterThanOrEqualTo: _searchController.text)
+                  .where('username', isLessThan: _searchController.text + "z")
                   .get(),
             )
           : FutureBuilder(

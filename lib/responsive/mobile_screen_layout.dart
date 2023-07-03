@@ -40,11 +40,13 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        children: homeScreenItems,
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged: onPageChanged,
+      body: SafeArea(
+        child: PageView(
+          children: homeScreenItems,
+          physics: const NeverScrollableScrollPhysics(),
+          controller: pageController,
+          onPageChanged: onPageChanged,
+        ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(top: 8),

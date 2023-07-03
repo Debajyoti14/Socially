@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.instagram_flutter">
    <application
-        android:label="Instagram Flutter"
+        android:label="Socially"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

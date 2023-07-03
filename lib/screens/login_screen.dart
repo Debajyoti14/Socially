@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:instagram_flutter/screens/signup_screen.dart';
 import 'package:instagram_flutter/utils/global_variables.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
@@ -42,14 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
     if (res != 'success') {
       showSnackbar(res, context);
     } else {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ResponsiveLayoutScreen(
-            webScreenlayout: WebScreenLayout(),
-            mobileScreenlayout: MobileScreenLayout(),
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayoutScreen(
+              webScreenlayout: WebScreenLayout(),
+              mobileScreenlayout: MobileScreenLayout(),
+            ),
           ),
-        ),
-      );
+          (route) => false);
     }
   }
 
@@ -83,9 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 64),
               //Text Field for Email
               TextFieldInput(
-                  textEditingController: _emailController,
-                  textInputType: TextInputType.emailAddress,
-                  hintText: "Enter your Email"),
+                textEditingController: _emailController,
+                textInputType: TextInputType.emailAddress,
+                hintText: "Enter your Email",
+              ),
 
               const SizedBox(height: 24),
 

@@ -33,7 +33,6 @@ class FeedScreen extends StatelessWidget {
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-              print(snapshot.data);
               return ListView.builder(
                 itemCount: snapshot.data?.docs.length,
                 itemBuilder: (context, index) => Container(

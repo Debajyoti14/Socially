@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_flutter/widgets/text_field_input.dart';
+import 'package:http/http.dart' as http;
 
 import '../resources/auth_methods.dart';
 import '../responsive/mobile_screen_layout.dart';
@@ -43,16 +44,30 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
+  Future<Uint8List> convertNetworkImageToUint8List(String imageUrl) async {
+    var response = await http.get(Uri.parse(imageUrl));
+
+    if (response.statusCode == 200) {
+      return response.bodyBytes;
+    } else {
+      throw Exception('Failed to load image: ${response.statusCode}');
+    }
+  }
+
   void signUpUser() async {
     setState(() {
       _isLoading = true;
     });
+
+    Uint8List imageBytes = await convertNetworkImageToUint8List(
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfl57BUJYRzxh7tUOWK2J6wAXHdiQxM9n8uA&usqp=CAU');
+
     String res = await AuthMethods().SignUpUser(
       email: _emailController.text,
       password: _passwordController.text,
       username: _usernameController.text,
       bio: _bioController.text,
-      file: _image!,
+      file: _image ?? imageBytes,
     );
     setState(() {
       _isLoading = false;
@@ -60,14 +75,15 @@ class _SignupScreenState extends State<SignupScreen> {
     if (res != 'success') {
       showSnackbar(res, context);
     } else {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ResponsiveLayoutScreen(
-            webScreenlayout: WebScreenLayout(),
-            mobileScreenlayout: MobileScreenLayout(),
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayoutScreen(
+              webScreenlayout: WebScreenLayout(),
+              mobileScreenlayout: MobileScreenLayout(),
+            ),
           ),
-        ),
-      );
+          (route) => false);
     }
   }
 
