@@ -63,6 +63,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('-------------------------');
+    print(widget.uid);
+    print('-------------------------');
+
+    print(FirebaseAuth.instance.currentUser!.uid);
+    print("Instance.currentUser");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
