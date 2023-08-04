@@ -18,7 +18,7 @@ class AuthMethods {
   }
 
   //SignUp User
-  Future<String> SignUpUser({
+  Future<String> signUpUser({
     required String email,
     required String password,
     required String username,

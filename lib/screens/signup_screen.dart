@@ -62,7 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
     Uint8List imageBytes = await convertNetworkImageToUint8List(
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfl57BUJYRzxh7tUOWK2J6wAXHdiQxM9n8uA&usqp=CAU');
 
-    String res = await AuthMethods().SignUpUser(
+    String res = await AuthMethods().signUpUser(
       email: _emailController.text,
       password: _passwordController.text,
       username: _usernameController.text,
