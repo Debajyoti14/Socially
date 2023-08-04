@@ -109,9 +109,22 @@ class _AddPostScreenState extends State<AddPostScreen> {
     User _user = Provider.of<UserProvider>(context).getUser;
     if (_file == null) {
       return Center(
-        child: IconButton(
-          icon: const Icon(Icons.upload),
-          onPressed: () => _selectImage(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.upload),
+              onPressed: () => _selectImage(context),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Upload Image',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            )
+          ],
         ),
       );
     } else {

@@ -32,13 +32,19 @@ class User {
   factory User.fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return User(
-      username: snapshot['username'],
-      uid: snapshot['uid'],
-      email: snapshot['email'],
-      photoUrl: snapshot['photoUrl'],
-      bio: snapshot['bio'],
-      followers: snapshot['followers'],
-      following: snapshot['following'],
+      username:
+          snapshot.toString().contains('username') ? snapshot['username'] : '',
+      uid: snapshot.toString().contains('uid') ? snapshot['uid'] : '',
+      email: snapshot.toString().contains('email') ? snapshot['email'] : '',
+      photoUrl:
+          snapshot.toString().contains('photoUrl') ? snapshot['photoUrl'] : '',
+      bio: snapshot.toString().contains('bio') ? snapshot['bio'] : '',
+      followers: snapshot.toString().contains('followers')
+          ? snapshot['followers']
+          : [],
+      following: snapshot.toString().contains('following')
+          ? snapshot['following']
+          : [],
     );
   }
 }

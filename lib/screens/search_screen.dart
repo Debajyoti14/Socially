@@ -39,29 +39,29 @@ class _SearchScreenState extends State<SearchScreen> {
       body: isShowUsers
           ? FutureBuilder(
               builder: (context, snapshot) {
-                if (!snapshot.hasData) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
                 return (snapshot.data! as dynamic).docs.length != 0
                     ? ListView.builder(
-                        itemCount: (snapshot.data! as dynamic).docs.length,
+                        itemCount: (snapshot.data! as dynamic).docs.length ?? 0,
                         itemBuilder: (context, index) {
+                          final searchData =
+                              (snapshot.data! as dynamic).docs[index];
                           return InkWell(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ProfileScreen(
-                                  uid: (snapshot.data! as dynamic).docs[index]
-                                      ['uid'],
+                                  uid: searchData['uid'],
                                 ),
                               ),
                             ),
                             child: ListTile(
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                  (snapshot.data! as dynamic).docs[index]
-                                      ['photoUrl'],
+                                  searchData['photoUrl'],
                                 ),
                               ),
                               title: Text((snapshot.data! as dynamic)

@@ -47,7 +47,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
       const FeedScreen(),
       const SearchScreen(),
       const AddPostScreen(),
-      const Text('feed'),
+      const Center(
+          child: Text(
+        'Notification feed',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      )),
       ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
     ];
     return Scaffold(

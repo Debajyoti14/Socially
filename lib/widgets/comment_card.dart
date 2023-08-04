@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-
-import '../providers/user_provider.dart';
 
 class CommentCard extends StatefulWidget {
   final snap;
@@ -15,8 +12,6 @@ class CommentCard extends StatefulWidget {
 class _CommentCardState extends State<CommentCard> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).getUser;
-
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 18,
@@ -73,10 +68,6 @@ class _CommentCardState extends State<CommentCard> {
               //   user.uid,
               //   widget.snap['likes'],
               // );
-              print(widget.snap['postId']);
-              print(widget.snap['commentId']);
-              print(user.uid);
-              print(widget.snap['likes']);
             },
             child: Container(
               padding: const EdgeInsets.all(8),
